@@ -61,6 +61,26 @@ http://127.0.0.1:5173
 npm run build
 ```
 
+## Docker 镜像
+
+构建镜像：
+
+```bash
+docker build -t docker-asset-frontend:latest .
+```
+
+运行容器：
+
+```bash
+docker run -d --name docker-asset-frontend -p 80:80 docker-asset-frontend:latest
+```
+
+说明：
+
+- 容器内由 Nginx 提供静态页面
+- `/api` 请求默认反向代理到 `http://backend:8080`
+- 如果需要和后端联动，建议通过 Docker Compose 与后端服务一起启动
+
 ## 接口代理
 
 开发环境通过 `vite.config.ts` 代理后端接口：
